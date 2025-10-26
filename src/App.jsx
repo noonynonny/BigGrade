@@ -10,7 +10,7 @@ import Leaderboard from "./pages/Leaderboard";
 import FindTutors from "./pages/FindTutors..jsx";
 import MyGigs from "./pages/MyGigs";
 import ActiveSessions from "./pages/ActiveSessions";
-import Marketplace from "./pages/Marketplace.jsx";
+import Marketplace from "./pages/Marketplace";
 import Profile from "./pages/Profile";
 
 function HomePage() {
