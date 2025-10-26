@@ -3,14 +3,14 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Layout from "./Layout";
 
-// --- Import all your page components ---
-// NOTE: I am assuming these files exist in src/pages/
+// --- Import all your page components with correct casing ---
+// The file names in the repository are: StudentsDashboard.jsx, Leaderboard.jsx, FindTutors..jsx, MyGigs.jsx, ActiveSessions.jsx, Profile.jsx
 import StudentsDashboard from "./pages/StudentsDashboard";
 import Leaderboard from "./pages/Leaderboard";
-import FindTutors from "./pages/FindTutors";
+import FindTutors from "./pages/FindTutors..jsx"; // NOTE: Double dot in filename
 import MyGigs from "./pages/MyGigs";
 import ActiveSessions from "./pages/ActiveSessions";
-import Marketplace from "./pages/Marketplace";
+import Marketplace from "./pages/Marketplace"; // Assuming Marketplace.jsx exists
 import Profile from "./pages/Profile";
 
 function HomePage() {
