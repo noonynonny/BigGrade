@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { base44 } from "@/api/base44Client";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { Plus, MessageSquare } from "lucide-react";
-import MegathreadCard from "../components/megathreads/MegathreadCard";
-import CreateMegathreadForm from "../components/megathreads/CreateMegathreadForm";
+import MegathreadCard from "../Components/megathreads/MegathreadCard";
+import CreateMegathreadForm from "../Components/megathreads/CreateMegathreadForm";
 
 export default function StudentsDashboard() {
   const [showCreateForm, setShowCreateForm] = useState(false);

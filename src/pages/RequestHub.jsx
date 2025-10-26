@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { base44 } from "@/api/base44Client";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { Plus, Briefcase } from "lucide-react";
-import MarketplaceRequestCard from "../components/marketplace/MarketplaceRequestCard";
-import CreateMarketplaceRequestForm from "../components/marketplace/CreateMarketplaceRequestForm";
+import MarketplaceRequestCard from "../Components/marketplace/MarketplaceRequestCard";
+import CreateMarketplaceRequestForm from "../Components/marketplace/CreateMarketplaceRequestForm";
 
 export default function RequestHub() {
   const [showCreateForm, setShowCreateForm] = useState(false);

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { base44 } from "@/api/base44Client";
 import { useQuery } from "@tanstack/react-query";
-import TutorListingCard from "../components/tutorListings/TutorListingCard";
+import TutorListingCard from "../Components/tutorListings/TutorListingCard";
 import { Search } from "lucide-react";
 
 export default function FindTutors() {

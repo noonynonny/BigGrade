@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { base44 } from "@/api/base44Client";
 import { useQuery } from "@tanstack/react-query";
 import { Briefcase, ArrowRight } from "lucide-react";
-import MarketplaceRequestCard from "../components/marketplace/MarketplaceRequestCard";
+import MarketplaceRequestCard from "../Components/marketplace/MarketplaceRequestCard";
 
 export default function MyGigs() {
   const [filter, setFilter] = useState("my_posts"); // "my_posts", "accepted_gigs"
