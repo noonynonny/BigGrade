@@ -7,10 +7,10 @@ import Layout from "./Layout";
 // The file names in the repository are: StudentsDashboard.jsx, Leaderboard.jsx, FindTutors..jsx, MyGigs.jsx, ActiveSessions.jsx, Profile.jsx
 import StudentsDashboard from "./pages/StudentsDashboard";
 import Leaderboard from "./pages/Leaderboard";
-import FindTutors from "./pages/FindTutors..jsx"; // NOTE: Double dot in filename
+import FindTutors from "./pages/FindTutors";
 import MyGigs from "./pages/MyGigs";
 import ActiveSessions from "./pages/ActiveSessions";
-import Marketplace from "./pages/Marketplace"; // Assuming Marketplace.jsx exists
+import Marketplace from "./pages/Marketplace.jsx";
 import Profile from "./pages/Profile";
 
 function HomePage() {
