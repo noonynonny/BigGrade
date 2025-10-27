@@ -1,0 +1,97 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Helper functions
+    function isSignedIn() {
+      return request.auth != null;
+    }
+    
+    function isOwner(userId) {
+      return request.auth.uid == userId;
+    }
+    
+    function isOwnerByEmail(email) {
+      return request.auth.token.email == email;
+    }
+    
+    // Users collection
+    match /users/{userId} {
+      allow read: if isSignedIn();
+      allow create: if isSignedIn();
+      allow update: if isSignedIn() && (isOwner(userId) || isOwnerByEmail(resource.data.email));
+      allow delete: if isSignedIn() && isOwner(userId);
+    }
+    
+    // Marketplace Requests
+    match /marketplaceRequests/{requestId} {
+      allow read: if isSignedIn();
+      allow create: if isSignedIn();
+      allow update: if isSignedIn() && isOwnerByEmail(resource.data.authorEmail);
+      allow delete: if isSignedIn() && isOwnerByEmail(resource.data.authorEmail);
+    }
+    
+    // Megathreads
+    match /megathreads/{threadId} {
+      allow read: if isSignedIn();
+      allow create: if isSignedIn();
+      allow update: if isSignedIn() && isOwnerByEmail(resource.data.authorEmail);
+      allow delete: if isSignedIn() && isOwnerByEmail(resource.data.authorEmail);
+    }
+    
+    // Thread Replies
+    match /threadReplies/{replyId} {
+      allow read: if isSignedIn();
+      allow create: if isSignedIn();
+      allow update: if isSignedIn() && isOwnerByEmail(resource.data.authorEmail);
+      allow delete: if isSignedIn() && isOwnerByEmail(resource.data.authorEmail);
+    }
+    
+    // Chat Messages
+    match /chatMessages/{messageId} {
+      allow read: if isSignedIn() && (
+        isOwnerByEmail(resource.data.senderEmail) || 
+        isOwnerByEmail(resource.data.recipientEmail)
+      );
+      allow create: if isSignedIn();
+      allow update: if isSignedIn() && (
+        isOwnerByEmail(resource.data.senderEmail) || 
+        isOwnerByEmail(resource.data.recipientEmail)
+      );
+      allow delete: if isSignedIn() && isOwnerByEmail(resource.data.senderEmail);
+    }
+    
+    // Global Chat Messages
+    match /globalChatMessages/{messageId} {
+      allow read: if isSignedIn();
+      allow create: if isSignedIn();
+      allow update: if false; // Can't edit global messages
+      allow delete: if isSignedIn() && isOwnerByEmail(resource.data.senderEmail);
+    }
+    
+    // News Posts
+    match /newsPosts/{postId} {
+      allow read: if isSignedIn();
+      allow create: if isSignedIn(); // In production, restrict to admins
+      allow update: if isSignedIn(); // In production, restrict to admins
+      allow delete: if isSignedIn(); // In production, restrict to admins
+    }
+    
+    // Tutor Listings
+    match /tutorListings/{listingId} {
+      allow read: if isSignedIn();
+      allow create: if isSignedIn();
+      allow update: if isSignedIn() && isOwnerByEmail(resource.data.tutorEmail);
+      allow delete: if isSignedIn() && isOwnerByEmail(resource.data.tutorEmail);
+    }
+    
+    // Notifications
+    match /notifications/{notificationId} {
+      allow read: if isSignedIn() && isOwnerByEmail(resource.data.recipientEmail);
+      allow create: if isSignedIn();
+      allow update: if isSignedIn() && isOwnerByEmail(resource.data.recipientEmail);
+      allow delete: if isSignedIn() && isOwnerByEmail(resource.data.recipientEmail);
+    }
+  }
+}
+
